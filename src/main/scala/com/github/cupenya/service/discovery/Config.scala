@@ -1,4 +1,4 @@
-package com.github.cupenya.gateway
+package com.github.cupenya.service.discovery
 
 import java.util.concurrent.TimeUnit
 
@@ -8,8 +8,8 @@ import scala.collection.JavaConversions._
 object Config {
   private val rootConfig = ConfigFactory.load()
 
-  object service-discovery {
-    private val config = rootConfig.getConfig("integration")
+  object `service-discovery` {
+    private val config = rootConfig.getConfig("service-discovery")
 
     object kubernetes {
       private val k8sConfig = config.getConfig("kubernetes")

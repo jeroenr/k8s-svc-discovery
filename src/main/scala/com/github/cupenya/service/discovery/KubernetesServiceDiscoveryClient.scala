@@ -35,8 +35,8 @@ class KubernetesServiceDiscoveryClient()(implicit system: ActorSystem, ec: Execu
   private val ssl = SSLContext.getInstance("SSL")
   ssl.init(null, trustAllCerts, new SecureRandom())
 
-  private val port = Config.service-discovery.kubernetes.port
-  private val host = Config.service-discovery.kubernetes.host
+  private val port = Config.`service-discovery`.kubernetes.port
+  private val host = Config.`service-discovery`.kubernetes.host
 
   private lazy val client = if (port == 443) {
     Http(system).outgoingConnectionHttps(
@@ -50,7 +50,7 @@ class KubernetesServiceDiscoveryClient()(implicit system: ActorSystem, ec: Execu
   }
 
   private val req = Get(s"/api/v1/services")
-    .withHeaders(Connection("Keep-Alive"), Authorization(OAuth2BearerToken(Config.service-discovery.kubernetes.token)))
+    .withHeaders(Connection("Keep-Alive"), Authorization(OAuth2BearerToken(Config.`service-discovery`.kubernetes.token)))
 
   def healthCheck: Future[_] =
     Source.single(req).via(client).runWith(Sink.head).filter(_.status.isSuccess())

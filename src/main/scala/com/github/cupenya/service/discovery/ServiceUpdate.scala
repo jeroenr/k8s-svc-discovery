@@ -1,6 +1,4 @@
-package com.github.cupenya.gateway.integration
-
-import com.github.cupenya.gateway.Logging
+package com.github.cupenya.service.discovery
 
 import scala.concurrent.Future
 

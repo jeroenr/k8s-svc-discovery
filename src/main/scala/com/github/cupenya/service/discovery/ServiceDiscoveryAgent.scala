@@ -2,8 +2,7 @@ package com.github.cupenya.service.discovery
 
 import akka.actor.{ Actor, ActorRef, ActorSystem }
 import akka.stream.Materializer
-import com.github.cupenya.gateway.health.ServiceDiscoveryHealthCheck
-import com.github.cupenya.gateway.{ Config, Logging }
+import com.github.cupenya.service.discovery.health.ServiceDiscoveryHealthCheck
 
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
@@ -20,7 +19,7 @@ class ServiceDiscoveryAgent[T <: ServiceUpdate](serviceDiscoverySource: ServiceD
   implicit val system: ActorSystem = context.system
   implicit val ec: ExecutionContext = context.dispatcher
 
-  val SERVICE_POLLING_INTERVAL = Config.service-discovery.polling.interval
+  val SERVICE_POLLING_INTERVAL = Config.`service-discovery`.polling.interval
 
   private val watchingServices: Receive = {
     case HealthCheck => handleHealthCheck(sender())

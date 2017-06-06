@@ -1,4 +1,4 @@
-package com.github.cupenya.gateway.health
+package com.github.cupenya.service.discovery.health
 
 import java.util.concurrent.TimeoutException
 
