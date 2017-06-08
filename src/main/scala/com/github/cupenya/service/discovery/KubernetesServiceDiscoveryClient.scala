@@ -71,7 +71,7 @@ class KubernetesServiceDiscoveryClient()(implicit system: ActorSystem, ec: Execu
               .flatMap(_.get("secured"))
               .flatMap(value => Try(value.toBoolean).toOption)
               .getOrElse(true), // Default is secured
-            so.metadata.labels
+            so.metadata.annotations
               .flatMap(_.get("permissions"))
               .flatMap(value => Try(value.parseJson.convertTo[List[Permission]]).toOption)
               .getOrElse(Nil)
@@ -90,7 +90,7 @@ trait KubernetesServiceUpdateParser extends DefaultJsonProtocol with Logging {
 
   case class Spec(ports: List[PortMapping])
 
-  case class Metadata(uid: String, name: String, namespace: String, labels: Option[Map[String, String]])
+  case class Metadata(uid: String, name: String, namespace: String, labels: Option[Map[String, String]], annotations: Option[Map[String, String]])
 
   case class ServiceObject(spec: Spec, metadata: Metadata)
 
@@ -98,7 +98,7 @@ trait KubernetesServiceUpdateParser extends DefaultJsonProtocol with Logging {
 
   implicit val portMappingFormat = jsonFormat4(PortMapping)
   implicit val specFormat = jsonFormat1(Spec)
-  implicit val metadataFormat = jsonFormat4(Metadata)
+  implicit val metadataFormat = jsonFormat5(Metadata)
   implicit val serviceObjectFormat = jsonFormat2(ServiceObject)
   implicit val serviceListFormat = jsonFormat1(ServiceList)
 
