@@ -70,7 +70,11 @@ class KubernetesServiceDiscoveryClient()(implicit system: ActorSystem, ec: Execu
             so.metadata.labels
               .flatMap(_.get("secured"))
               .flatMap(value => Try(value.toBoolean).toOption)
-              .getOrElse(true) // Default is secured
+              .getOrElse(true), // Default is secured
+            so.metadata.labels
+              .flatMap(_.get("permissions"))
+              .flatMap(value => Try(value.parseJson.convertTo[List[Permission]]).toOption)
+              .getOrElse(Nil)
           )
           log.debug(s"Got Kubernetes service update $ksu")
           ksu
@@ -126,6 +130,6 @@ trait DiscoverableThroughDns extends DiscoverableAddress with KubernetesNamespac
   def address: String = s"$name.$namespace"
 }
 
-case class KubernetesServiceUpdate(updateType: UpdateType, name: String, resource: String, namespace: String, port: Int, secured: Boolean)
+case class KubernetesServiceUpdate(updateType: UpdateType, name: String, resource: String, namespace: String, port: Int, secured: Boolean, permissions: List[Permission])
   extends ServiceUpdate
   with DiscoverableThroughDns

@@ -1,6 +1,19 @@
 package com.github.cupenya.service.discovery
 
 import scala.concurrent.Future
+import spray.json._
+
+sealed trait PermissionModel
+
+case class Permission(
+  id: String,
+  name: String,
+  description: Option[String]
+) extends PermissionModel
+
+object PermissionModel extends DefaultJsonProtocol {
+  implicit val PermissionFormat = jsonFormat3(Permission)
+}
 
 sealed trait UpdateType
 
@@ -24,6 +37,7 @@ trait ServiceUpdate extends DiscoverableAddress {
   def secured: Boolean
   def port: Int
   def namespace: String
+  def permissions: List[Permission]
 }
 
 trait ServiceDiscoverySource[T <: ServiceUpdate] extends Logging {
