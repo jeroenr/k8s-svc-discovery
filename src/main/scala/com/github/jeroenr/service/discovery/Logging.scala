@@ -1,4 +1,4 @@
-package com.github.cupenya.service.discovery
+package com.github.jeroenr.service.discovery
 
 import org.slf4s.{ Logging => SLF4SLogging }
 

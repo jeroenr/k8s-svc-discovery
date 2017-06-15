@@ -1,11 +1,11 @@
-package com.github.cupenya.service.discovery.health
+package com.github.jeroenr.service.discovery.health
 
 import akka.actor.ActorRef
 import akka.http.scaladsl.model.DateTime
 import akka.pattern._
 import akka.util.Timeout
-import com.github.cupenya.service.discovery.Logging
-import com.github.cupenya.service.discovery.ServiceDiscoveryAgent
+import com.github.jeroenr.service.discovery.Logging
+import com.github.jeroenr.service.discovery.ServiceDiscoveryAgent
 
 import scala.concurrent.{ ExecutionContext, Future }
 import scala.concurrent.duration._

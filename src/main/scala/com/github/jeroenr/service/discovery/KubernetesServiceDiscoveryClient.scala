@@ -1,4 +1,4 @@
-package com.github.cupenya.service.discovery
+package com.github.jeroenr.service.discovery
 
 import java.security.SecureRandom
 import java.security.cert.X509Certificate

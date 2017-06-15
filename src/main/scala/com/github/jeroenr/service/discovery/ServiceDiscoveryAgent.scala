@@ -1,8 +1,8 @@
-package com.github.cupenya.service.discovery
+package com.github.jeroenr.service.discovery
 
 import akka.actor.{ Actor, ActorRef, ActorSystem }
 import akka.stream.Materializer
-import com.github.cupenya.service.discovery.health.ServiceDiscoveryHealthCheck
+import com.github.jeroenr.service.discovery.health.ServiceDiscoveryHealthCheck
 
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._

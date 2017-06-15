@@ -1,4 +1,4 @@
-package com.github.cupenya.service.discovery
+package com.github.jeroenr.service.discovery
 
 import scala.concurrent.Future
 import spray.json._

@@ -1,11 +1,11 @@
-package com.github.cupenya.service.discovery.health
+package com.github.jeroenr.service.discovery.health
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives
 import akka.stream.Materializer
-import com.github.cupenya.service.discovery.{ Config, Logging }
+import com.github.jeroenr.service.discovery.{ Config, Logging }
 import spray.json.DefaultJsonProtocol
 
 import scala.concurrent.ExecutionContext

@@ -1,4 +1,4 @@
-package com.github.cupenya.service.discovery.health
+package com.github.jeroenr.service.discovery.health
 
 import spray.json.{ DefaultJsonProtocol, DeserializationException, JsString, JsValue, JsonFormat }
 

@@ -2,7 +2,7 @@ import ReleaseTransformations._
 import com.typesafe.sbt.packager.docker.Cmd
 
 name          := """k8s-svc-discovery"""
-organization  := "com.github.cupenya"
+organization  := "com.github.jeroenr"
 scalaVersion  := "2.11.8"
 scalacOptions := Seq("-unchecked", "-feature", "-deprecation", "-encoding", "utf8")
 
@@ -49,11 +49,14 @@ releasePublishArtifactsAction := PgpKeys.publishSigned.value
 pomIncludeRepository := { _ => false }
 credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 publishTo := {
-  val nexus = "https://test.cupenya.com/nexus/content/repositories"
-  Some("snapshots" at nexus + "/snapshots")
-}
+    val nexus = "https://oss.sonatype.org/"
+    if (isSnapshot.value)
+      Some("snapshots" at nexus + "content/repositories/snapshots")
+    else
+      Some("releases" at nexus + "service/local/staging/deploy/maven2")
+  }
 pomExtra :=
-  <url>https://github.com/cupenya/k8s-svc-discovery</url>
+  <url>https://github.com/jeroenr/k8s-svc-discovery</url>
   <licenses>
     <license>
       <name>Apache-2.0</name>
@@ -62,14 +65,14 @@ pomExtra :=
     </license>
   </licenses>
   <scm>
-    <url>https://github.com/cupenya/k8s-svc-discovery</url>
-    <connection>scm:git:git@github.com:cupenya/k8s-svc-discovery.git</connection>
+    <url>https://github.com/jeroenr/k8s-svc-discovery</url>
+    <connection>scm:git:git@github.com:jeroenr/k8s-svc-discovery.git</connection>
   </scm>
   <developers>
     <developer>
-      <id>cupenya</id>
+      <id>jeroenr</id>
     <name>Jeroen Rosenberg</name>
-      <url>https://github.com/cupenya/</url>
+      <url>https://github.com/jeroenr/</url>
     </developer>
   </developers>
 
