@@ -9,20 +9,19 @@ scalacOptions := Seq("-unchecked", "-feature", "-deprecation", "-encoding", "utf
 resolvers += Resolver.jcenterRepo
 
 libraryDependencies ++= {
-  val akkaV            = "2.4.10"
+  val akkaV            = "2.4.17"
+  val akkaHttpV	       = "10.0.7"
   val ficusV           = "1.2.4"
   val scalaTestV       = "3.0.0-M15"
   val slf4sV           = "1.7.10"
   val logbackV         = "1.1.3"
   Seq(
-    "com.typesafe.akka" %% "akka-http-core"                    % akkaV,
-    "com.typesafe.akka" %% "akka-http-experimental"            % akkaV,
-    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % akkaV,
+    "com.typesafe.akka" %% "akka-http"                         % akkaHttpV,
+    "com.typesafe.akka" %% "akka-http-spray-json"              % akkaHttpV,
     "com.typesafe.akka" %% "akka-slf4j"                        % akkaV,
     "org.slf4s"         %% "slf4s-api"                         % slf4sV,
     "ch.qos.logback"    %  "logback-classic"                   % logbackV,
-    "org.scalatest"     %% "scalatest"                         % scalaTestV       % Test,
-    "com.typesafe.akka" %% "akka-http-testkit"                 % akkaV            % Test
+    "org.scalatest"     %% "scalatest"                         % scalaTestV       % Test
   )
 }
 
