@@ -3,6 +3,13 @@ import com.typesafe.sbt.packager.docker.Cmd
 
 name          := """k8s-svc-discovery"""
 organization  := "com.github.jeroenr"
+
+packageSummary := "K8s service discovery"
+
+packageDescription := "Listens to k8s service events and provides a callback to receive k8s service metadata"
+
+maintainer := "Jeroen Rosenberg <jeroen.rosenberg@gmail.com>"
+
 scalaVersion  := "2.11.8"
 scalacOptions := Seq("-unchecked", "-feature", "-deprecation", "-encoding", "utf8")
 
