@@ -39,6 +39,8 @@ enablePlugins(JavaServerAppPackaging)
 
 publishArtifact in (Compile, packageDoc) := false
 
+publishArtifact in packageDoc := false
+
 val shortCommit = ("git rev-parse --short HEAD" !!).replaceAll("\\n", "").replaceAll("\\r", "")
 
 
