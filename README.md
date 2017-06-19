@@ -1,2 +1,2 @@
-# K8s service discovery hook
+# K8s service discovery hook [![Build Status](https://travis-ci.org/jeroenr/k8s-svc-discovery.svg?branch=master)](https://travis-ci.org/jeroenr/k8s-svc-discovery) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.jeroenr/k8s-svc-discovery_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.jeroenr/k8s-svc-discovery_2.11)
 Listens for Kubernetes svc events and provides a callback to receive service metadata
